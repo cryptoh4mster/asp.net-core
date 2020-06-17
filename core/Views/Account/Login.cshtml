@@ -1,0 +1,22 @@
+﻿@model core.Models.Login
+
+<h2>Вход</h2>
+<a asp-action="Register" asp-controller="Account">Регистрация</a>
+<form asp-action="Login" asp-controller="Account" asp-antiforgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div class="form-group">
+            <label asp-for="LoginName">Введите логин</label>
+            <input type="text" asp-for="LoginName" />
+            <span asp-validation-for="LoginName" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Введите пароль</label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Войти" class="btn" />
+        </div>
+    </div>
+</form>

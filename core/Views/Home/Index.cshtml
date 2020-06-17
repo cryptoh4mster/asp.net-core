@@ -1,0 +1,23 @@
+﻿
+@model IEnumerable<core.Models.User>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>     
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    @foreach (var item in Model)
+    { 
+        <p>@item.LoginName</p>
+    }  
+</div>
+<form asp-action="AddPicture" asp-controller="Home" method="post" enctype="multipart/form-data">
+        <label> Загрузить изображение </label>
+        <input type="file" name="uploadPicture" />     
+        <input type="submit" value="Добавить" class="btn btn-outline-secondary" />
+</form>
