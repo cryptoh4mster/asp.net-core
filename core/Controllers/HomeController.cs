@@ -43,12 +43,10 @@ namespace core.Controllers
         {
             BinaryReader reader = new BinaryReader(uploadPicture.OpenReadStream());
             byte[] picData = reader.ReadBytes((int)uploadPicture.Length);
-            User user = _db.Users.First(u => u.Id == PicId);
+            User user = _db.Users.First(u => u.Id == PicId);//Здесь Id пользователя должен браться из Claims, созданным после аутентификации,но это не реализовано, так что все картинки загружаются админу
             Picture pic = new Picture { Image = picData,User=user};      
-            //_db.Users.FirstOrDefault(u => u.Id == PicId).Pictures.Add(pic);
             _db.Pictures.Add(pic);
             await _db.SaveChangesAsync();
-            PicId++;
             return View();
         }
         public IActionResult Privacy()
